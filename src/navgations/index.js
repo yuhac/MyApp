@@ -1,19 +1,33 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import DrawerNavigator from './DrawerNavigator'
 import AuthNavigator from './AuthNavigator'
 import { GlobalContext } from '../context/Provider'
+// import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const AppNavContainer = () => {
+  const [authLoaded, setAuthLoaded] = useState(false)
   const { authState: { loginState } } = useContext(GlobalContext)
 
+  const getUser = async () => {
+    try {
+      // const user = await AsyncStorage.getItem("user")
+      // if (user) {
+      //   setAuthLoaded(true)
+
+      // }
+    } catch (error) {
+
+    }
+  }
+
   useEffect(() => {
-    console.log(loginState, '--loginSta1te---------')
-  }, [loginState])
+    getUser()
+  })
 
   return (
     <NavigationContainer>
-      {loginState ? <DrawerNavigator /> : <AuthNavigator />}
+      {loginState || authLoaded ? <DrawerNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }

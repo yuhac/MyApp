@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   View, Text, TouchableOpacity, ActivityIndicator
 } from 'react-native'
@@ -12,7 +12,7 @@ const Button = ({ title, secondary, primary, danger, loading, disabled, onPress 
       primary && colors.primary ||
       danger && colors.danger ||
       disabled && colors.grey ||
-      colors.white
+      colors.primary
     )
   }
 

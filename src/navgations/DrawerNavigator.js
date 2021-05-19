@@ -6,7 +6,7 @@ const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator()
 
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator drawerType="slide">
       <Drawer.Screen name="Home" component={HomeNavigator} />
     </Drawer.Navigator>
   );

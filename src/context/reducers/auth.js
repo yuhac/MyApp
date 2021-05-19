@@ -1,15 +1,34 @@
-import { REGISTER_USER, REQ_FAIL, REQ_LOADING, REQ_SUCCESS } from "../../constants/actionTypes"
+import {
+  CLEAR_AUTH_STATE,
+  REGISTER_FAIL,
+  REGISTER_LOADING,
+  REGISTER_SUCCESS,
+  LOGIN_LOADING,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+} from "../../constants/actionTypes"
 
 const auth = (state, { type, payload }) => {
   switch (type) {
-    case REQ_LOADING:
+    case REGISTER_LOADING:
+    case LOGIN_LOADING:
       return { ...state, loading: true }
-    case REQ_SUCCESS:
-      return { ...state, loading: false }
-    case REQ_FAIL:
+
+    case REGISTER_SUCCESS:
+      return { ...state, data: payload, loading: false }
+
+    case LOGIN_SUCCESS:
+      console.log("userinfo:--------", payload, type)
+      return { ...state, userInfo: payload, loginState: true, loading: false }
+    case REGISTER_FAIL:
+    case LOGIN_FAIL:
       return { ...state, loading: false, error: payload }
-    case REGISTER_USER:
-      return { ...state, data: payload }
+
+    case CLEAR_AUTH_STATE:
+      return {
+        ...state, data: null, loading: false, error: null
+      }
+
     default:
       return state
   }

@@ -1,13 +1,32 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useNavigation } from '@react-navigation/native'
+
 import RegisterComponent from '../../components/Register';
-import { register } from '../../context/actions/auth'
+import { LOGIN } from '../../constants/routeName';
+import { register, clearAuthState } from '../../context/actions/auth'
 import { GlobalContext } from '../../context/Provider';
 
 
 const Register = () => {
+  const { navigate } = useNavigation()
+
   const [form, setForm] = useState({})
   const [errors, setErrors] = useState({})
-  const { authDispatch, authState: { loading, error } } = useContext(GlobalContext)
+  const { authDispatch, authState: { loading, error, data } } = useContext(GlobalContext)
+
+  useEffect(() => {
+    if (data) {
+      navigate(LOGIN)
+    }
+    return () => {
+      if (data) {
+        clearAuthState()(authDispatch)
+      }
+    }
+  }, [data])
+
+
+
   const onChange = ({ name, value }) => {
     setForm({ ...form, [name]: value })
     if (value) {
@@ -32,7 +51,6 @@ const Register = () => {
 
   return (
     <RegisterComponent
-      form={form}
       errors={errors}
       onChange={onChange}
       onSubmit={onSubmit}

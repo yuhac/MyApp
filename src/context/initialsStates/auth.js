@@ -1,6 +1,7 @@
 export default {
   loginState: false,
-  data: {},
+  data: null,
   loading: false,
-  error: null
+  error: null,
+  userInfo: null
 }
