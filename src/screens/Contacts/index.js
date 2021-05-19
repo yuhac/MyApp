@@ -11,7 +11,13 @@ const Contacts = () => {
   const { setOptions, toggleDrawer } = useNavigation()
 
   useEffect(() => {
-
+    setOptions({
+      headerLeft: () => {
+        <TouchableOpacity onPress={() => { toggleDrawer() }}>
+          <Text></Text>
+        </TouchableOpacity>
+      }
+    })
   }, [])
 
   return (
