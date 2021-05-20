@@ -27,7 +27,7 @@ const AppNavContainer = () => {
 
   return (
     <NavigationContainer>
-      {loginState ? <DrawerNavigator /> : <AuthNavigator />}
+      {!loginState ? <DrawerNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }

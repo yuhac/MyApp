@@ -3,13 +3,9 @@ import colors from '../../assets/theme/colors'
 
 export default StyleSheet.create({
   logoImage: {
-    width: 100,
-    height: 100,
-    borderWidth: 1,
-    borderColor: colors.grey,
-    borderRadius: 50,
-    marginTop: 30,
-    alignSelf: 'center'
+    marginTop: 80,
+    color: colors.primary,
+    alignSelf: 'center',
   },
   title: {
     fontSize: 21,

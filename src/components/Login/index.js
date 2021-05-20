@@ -19,7 +19,7 @@ const Login = ({ form, loading, errors, error, onChange, onSubmit }) => {
 
   return (
     <Container>
-      <Image style={styles.logoImage} />
+      <Icon type='ion' name='logo-npm' size={50} style={styles.logoImage} />
       <View>
         <Text style={styles.title}></Text>
         <Text style={styles.subTitle}></Text>
