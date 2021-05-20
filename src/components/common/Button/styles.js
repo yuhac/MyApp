@@ -7,11 +7,11 @@ export default StyleSheet.create({
     borderRadius: 4,
     marginVertical: 5,
     paddingHorizontal: 5,
-    alignItems: "center",
-    justifyContent: "space-evenly"
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
   },
   loaderSection: {
-    flexDirection: "row"
+    flexDirection: 'row'
   }
 
 })

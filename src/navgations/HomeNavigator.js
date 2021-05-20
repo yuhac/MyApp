@@ -15,7 +15,7 @@ const HomeNavigator = () => {
   const HomeStack = createStackNavigator()
 
   return (
-    <HomeStack.Navigator initialRouteName={CONTACT_LIST}>
+    <HomeStack.Navigator initialRouteName={CONTACT_LIST} >
       <HomeStack.Screen name={CONTACT_LIST} component={Contacts} />
       <HomeStack.Screen name={CONTACT_INFO} component={ContactInfo} />
       <HomeStack.Screen name={CONTACT_CREATE} component={ContactCreate} />

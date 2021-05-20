@@ -28,13 +28,13 @@ instance.interceptors.response.use(response => {
 
   return response
 }, error => {
-  Alert.alert("温馨提示",
-    "网络繁忙",
+  Alert.alert('温馨提示',
+    '网络繁忙',
     [
       {
-        text: "确定",
+        text: '确定',
         onPress: () => null,
-        style: "cancel",
+        style: 'cancel',
       },
     ]
   )

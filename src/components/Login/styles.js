@@ -9,17 +9,17 @@ export default StyleSheet.create({
     borderColor: colors.grey,
     borderRadius: 50,
     marginTop: 30,
-    alignSelf: "center"
+    alignSelf: 'center'
   },
   title: {
     fontSize: 21,
-    textAlign: "center",
+    textAlign: 'center',
     paddingTop: 20,
-    fontWeight: "500"
+    fontWeight: '500'
   },
   subTitle: {
     fontSize: 12,
-    textAlign: "center",
+    textAlign: 'center',
     paddingVertical: 10,
     color: colors.black
   },
@@ -30,7 +30,7 @@ export default StyleSheet.create({
   },
   createSection: {
     paddingVertical: 10,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   linkBtn: {
     paddingLeft: 10,

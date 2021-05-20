@@ -1,4 +1,4 @@
-import { CONTACT_CREATE, CONTACT_INFO, CONTACT_LIST } from "../../constants/routeName"
+import { CONTACT_CREATE, CONTACT_INFO, CONTACT_LIST } from '../../constants/routeName'
 
 const contacts = (state, { type, payload }) => {
   switch (type) {

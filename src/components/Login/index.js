@@ -7,11 +7,12 @@ import Container from '../common/Container'
 import Input from '../common/Input'
 import Button from '../common/Button'
 import Message from '../common/Message'
+import Icon from '../common/Icon'
 
 import styles from './styles'
 import { REGISTER } from '../../constants/routeName'
 
-const Login = ({ loading, errors, error, onChange, onSubmit }) => {
+const Login = ({ form, loading, errors, error, onChange, onSubmit }) => {
   const { navigate } = useNavigation()
 
   const [secureTextEntry, setSecureTextEntry] = useState(true)
@@ -21,26 +22,31 @@ const Login = ({ loading, errors, error, onChange, onSubmit }) => {
       <Image style={styles.logoImage} />
       <View>
         <Text style={styles.title}></Text>
-        <Text style={styles.subTitle}>please login here</Text>
+        <Text style={styles.subTitle}></Text>
       </View>
       <View style={styles.form}>
         <Message danger retry retryFn={onSubmit} message={error?.error} />
         <Input
-          label="账号"
-          placeholder="请填入账号"
-          onChangeText={(value) => onChange({ name: "userName", value })}
+          value={form.userName || null}
+          label='账号'
+          placeholder='请填入账号'
+          onChangeText={(value) => onChange({ name: 'userName', value })}
           error={errors?.userName}
         />
         <Input
-          label="密码"
-          placeholder="请填入密码"
+          label='密码'
+          placeholder='请填入密码'
           secureTextEntry={secureTextEntry}
-          onChangeText={(value) => onChange({ name: "password", value })}
-          icon={<Text onPress={() => setSecureTextEntry(!secureTextEntry)}>{secureTextEntry ? "show" : "hide"}</Text>}
-          iconPosition="right"
+          onChangeText={(value) => onChange({ name: 'password', value })}
+          icon={<TouchableOpacity onPress={() => setSecureTextEntry(!secureTextEntry)}>
+            <Icon type='entypo' style={{ padding: 10 }} size={14} name={
+              secureTextEntry ? 'eye' : 'eye-with-line'
+            } />
+          </TouchableOpacity>}
+          iconPosition='right'
           error={errors?.password}
         />
-        <Button title="登录" onPress={onSubmit} disabled={loading} loading={loading} />
+        <Button title='登录' onPress={onSubmit} disabled={loading} loading={loading} />
         <View style={styles.createSection}>
           <Text>创建新账户？</Text>
           <TouchableOpacity onPress={() => { navigate(REGISTER) }}>

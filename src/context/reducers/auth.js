@@ -6,7 +6,8 @@ import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-} from "../../constants/actionTypes"
+  LOGOUT_USER,
+} from '../../constants/actionTypes'
 
 const auth = (state, { type, payload }) => {
   switch (type) {
@@ -18,7 +19,7 @@ const auth = (state, { type, payload }) => {
       return { ...state, data: payload, loading: false }
 
     case LOGIN_SUCCESS:
-      console.log("userinfo:--------", payload, type)
+      console.log('userinfo:--------', payload, type)
       return { ...state, userInfo: payload, loginState: true, loading: false }
     case REGISTER_FAIL:
     case LOGIN_FAIL:
@@ -28,7 +29,10 @@ const auth = (state, { type, payload }) => {
       return {
         ...state, data: null, loading: false, error: null
       }
-
+    case LOGOUT_USER:
+      return {
+        ...state, data: null, loading: false, error: null, loginState: null, userInfo: null
+      }
     default:
       return state
   }

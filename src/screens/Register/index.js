@@ -15,9 +15,9 @@ const Register = () => {
   const { authDispatch, authState: { loading, error, data } } = useContext(GlobalContext)
 
   useEffect(() => {
-    if (data) {
-      navigate(LOGIN)
-    }
+    // if (data) {
+    //   navigate(LOGIN)
+    // }
     return () => {
       if (data) {
         clearAuthState()(authDispatch)
@@ -35,17 +35,20 @@ const Register = () => {
   }
   const onSubmit = () => {
     if (!form.userName) {
-      setErrors(prev => ({ ...prev, userName: "请输入用户名" }))
+      setErrors(prev => ({ ...prev, userName: '请输入用户名' }))
     }
     if (!form.email) {
-      setErrors(prev => ({ ...prev, email: "请输入邮箱" }))
+      setErrors(prev => ({ ...prev, email: '请输入邮箱' }))
     }
     if (!form.password) {
-      setErrors(prev => ({ ...prev, password: "请输入密码" }))
+      setErrors(prev => ({ ...prev, password: '请输入密码' }))
     }
 
     if (Object.keys(form).length === 3 && Object.values(form).every(item => item.trim().length > 0) && Object.values(errors).every(item => !item)) {
-      register(form)(authDispatch)
+      register(form)(authDispatch)((data) => {
+        console.log(data, '-res-')
+        navigate(LOGIN, { data })
+      })
     }
   }
 
