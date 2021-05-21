@@ -17,7 +17,7 @@ export const register = (data) => dispatch => async onSuccess => {
   dispatch({ type: REGISTER_LOADING })
 
   try {
-    const res = await axios.get('/users')
+    const res = await axios.get('users')
     dispatch({ type: REGISTER_SUCCESS, payload: res.data[0] })
     // AsyncStorage.setItem('user', result)
     onSuccess(data)
@@ -49,7 +49,7 @@ export const login = (data) => async dispatch => {
   dispatch({ type: LOGIN_LOADING })
 
   try {
-    const res = await axios.get('/users')
+    const res = await axios.get('users')
     dispatch({ type: LOGIN_SUCCESS, payload: res.data[0] })
   } catch (err) {
     dispatch({

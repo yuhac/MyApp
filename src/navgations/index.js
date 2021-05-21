@@ -6,7 +6,6 @@ import { GlobalContext } from '../context/Provider'
 // import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const AppNavContainer = () => {
-  const [authLoaded, setAuthLoaded] = useState(true)
   const { authState: { loginState } } = useContext(GlobalContext)
 
   const getUser = async () => {
@@ -27,7 +26,7 @@ const AppNavContainer = () => {
 
   return (
     <NavigationContainer>
-      {!loginState ? <DrawerNavigator /> : <AuthNavigator />}
+      {loginState ? <DrawerNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 }
